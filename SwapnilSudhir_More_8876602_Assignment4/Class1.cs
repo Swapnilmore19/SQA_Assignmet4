@@ -236,6 +236,7 @@ public class SwapnilSudhirMore8876602Assignment4Test
         driver.FindElement(By.Id("accidents")).Click();
         driver.FindElement(By.Id("accidents")).SendKeys("1");
         driver.FindElement(By.Id("btnSubmit")).Click();
+
         {
             var element = driver.FindElement(By.Id("btnSubmit"));
             Actions builder = new Actions(driver);
