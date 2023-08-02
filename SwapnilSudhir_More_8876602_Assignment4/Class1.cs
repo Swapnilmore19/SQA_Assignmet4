@@ -138,5 +138,120 @@ public class SwapnilSudhirMore8876602Assignment4Test
             Assert.That(value, Is.EqualTo("No Insurance for you!!  Too many accidents - go take a course!"));
         }
     }
-    
+
+    [Test]
+    public void InsuranceQuote04_Test_InvalidPhone_ValidData_Age27_Experience3_Accidents0()
+    {
+        //Arrange
+        driver.Navigate().GoToUrl("http://localhost/prog8170a04/getQuote.html");
+        driver.Manage().Window.Size = new System.Drawing.Size(974, 1032);
+
+        //Act
+        driver.FindElement(By.Id("firstName")).Click();
+        driver.FindElement(By.Id("firstName")).SendKeys("Swapnil");
+        driver.FindElement(By.Id("lastName")).SendKeys("More");
+        driver.FindElement(By.Id("address")).SendKeys("145 Columbia street west");
+        driver.FindElement(By.Id("city")).SendKeys("Waterloo");
+        driver.FindElement(By.Id("postalCode")).SendKeys("N2L 3L2");
+        driver.FindElement(By.Id("phone")).Click();
+        driver.FindElement(By.Id("phone")).SendKeys("647897470");
+        driver.FindElement(By.Id("email")).Click();
+        driver.FindElement(By.Id("email")).SendKeys("swapm1999.sm@gmail.com");
+        driver.FindElement(By.Id("age")).Click();
+        driver.FindElement(By.Id("age")).SendKeys("27");
+        driver.FindElement(By.Id("experience")).Click();
+        driver.FindElement(By.Id("experience")).SendKeys("3");
+        driver.FindElement(By.Id("accidents")).Click();
+        driver.FindElement(By.Id("accidents")).SendKeys("0");
+        driver.FindElement(By.CssSelector(".card-body > .form-group:nth-child(2)")).Click();
+        driver.FindElement(By.Id("btnSubmit")).Click();
+        driver.FindElement(By.Id("phone-error")).Click();
+
+        //Assert
+        Assert.That(driver.FindElement(By.Id("phone-error")).Text, Is.EqualTo("Phone Number must follow the patterns 111-111-1111 or (111)111-1111"));
+    }
+    [Test]
+    public void InsuranceQuote05_Test_InvalidEmail_ValidData_Age28_Experience3_Accidents0()
+    {
+
+        //Arrange
+        driver.Navigate().GoToUrl("http://localhost/prog8170a04/getQuote.html");
+        driver.Manage().Window.Size = new System.Drawing.Size(974, 1032);
+
+        //Act
+        driver.FindElement(By.Id("firstName")).Click();
+        driver.FindElement(By.Id("firstName")).SendKeys("Swapnil");
+        driver.FindElement(By.Id("lastName")).Click();
+        driver.FindElement(By.Id("lastName")).SendKeys("More");
+        driver.FindElement(By.Id("address")).Click();
+        driver.FindElement(By.Id("address")).SendKeys("145 Columbia st");
+        driver.FindElement(By.CssSelector(".form-row:nth-child(4)")).Click();
+        driver.FindElement(By.Id("city")).Click();
+        driver.FindElement(By.Id("city")).SendKeys("Waterloo");
+        driver.FindElement(By.Id("postalCode")).Click();
+        driver.FindElement(By.Id("postalCode")).SendKeys("N2L 3L2");
+        driver.FindElement(By.Id("phone")).Click();
+        driver.FindElement(By.Id("phone")).SendKeys("647-897-4709");
+        driver.FindElement(By.Id("email")).Click();
+        driver.FindElement(By.Id("email")).SendKeys("fsfw343sf5");
+        driver.FindElement(By.Id("age")).Click();
+        driver.FindElement(By.Id("age")).SendKeys("28");
+        driver.FindElement(By.Id("experience")).Click();
+        driver.FindElement(By.Id("experience")).SendKeys("3");
+        driver.FindElement(By.Id("accidents")).Click();
+        driver.FindElement(By.Id("accidents")).SendKeys("0");
+        driver.FindElement(By.CssSelector(".form-group:nth-child(4) > label")).Click();
+        driver.FindElement(By.Id("btnSubmit")).Click();
+        driver.FindElement(By.CssSelector(".col-md-8")).Click();
+
+        //Assert
+        Assert.That(driver.FindElement(By.Id("email-error")).Text, Is.EqualTo("Must be a valid email address"));
+    }
+    [Test]
+    public void InsuranceQuote06_Test_InvalidPostalCode_ValidData_Age35_Experience17_Accidents1()
+    {
+        //Arrange
+        driver.Navigate().GoToUrl("http://localhost/prog8170a04/getQuote.html");
+        driver.Manage().Window.Size = new System.Drawing.Size(974, 1032);
+
+        //Act
+        driver.FindElement(By.Id("firstName")).Click();
+        driver.FindElement(By.Id("firstName")).SendKeys("Swapnil");
+        driver.FindElement(By.Id("lastName")).Click();
+        driver.FindElement(By.Id("lastName")).SendKeys("more");
+        driver.FindElement(By.Id("address")).Click();
+        driver.FindElement(By.Id("address")).SendKeys("145 Columbia st");
+        driver.FindElement(By.Id("city")).Click();
+        driver.FindElement(By.Id("city")).SendKeys("Waterloo");
+        driver.FindElement(By.Id("postalCode")).Click();
+        driver.FindElement(By.Id("postalCode")).SendKeys("889N34");
+        driver.FindElement(By.Id("phone")).Click();
+        driver.FindElement(By.Id("phone")).SendKeys("647-897-4709");
+        driver.FindElement(By.Id("email")).Click();
+        driver.FindElement(By.Id("email")).SendKeys("sdsdsd@gmail.com");
+        driver.FindElement(By.Id("age")).Click();
+        driver.FindElement(By.Id("age")).SendKeys("35");
+        driver.FindElement(By.Id("experience")).Click();
+        driver.FindElement(By.Id("experience")).SendKeys("17");
+        driver.FindElement(By.Id("accidents")).Click();
+        driver.FindElement(By.Id("accidents")).SendKeys("1");
+        driver.FindElement(By.Id("btnSubmit")).Click();
+        {
+            var element = driver.FindElement(By.Id("btnSubmit"));
+            Actions builder = new Actions(driver);
+            builder.MoveToElement(element).Perform();
+        }
+        {
+            var element = driver.FindElement(By.TagName("body"));
+            Actions builder = new Actions(driver);
+            builder.MoveToElement(element, 0, 0).Perform();
+        }
+        driver.FindElement(By.Id("postalCode-error")).Click();
+        driver.FindElement(By.Id("postalCode-error")).Click();
+        driver.FindElement(By.CssSelector(".col-md-2")).Click();
+
+        //Assert
+        Assert.That(driver.FindElement(By.Id("postalCode-error")).Text, Is.EqualTo("Postal Code must follow the pattern A1A 1A1"));
+    }
+
 }
